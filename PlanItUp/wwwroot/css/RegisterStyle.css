@@ -1,0 +1,110 @@
+﻿/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #000;
+    border-radius: 10px;
+    padding: 40px;
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+    /* Estilo del logo */
+    .form-container img {
+        height: 50px;
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+/* Estilo de los pasos del formulario */
+.form-step {
+    display: none;
+}
+
+    .form-step h1,
+    .form-step h2,
+    .form-step h3 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .form-step p {
+        color: #aaa;
+        margin-bottom: 20px;
+    }
+
+/* Input */
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+/* Botones */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botón siguiente */
+.next-button {
+    background-color: #4f8ef7;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .next-button:hover {
+        background-color: #366fd1;
+    }
+
+/* Botón volver atrás */
+.back-button {
+    background-color: #666;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .back-button:hover {
+        background-color: #444;
+    }
+
+/* Botón cancelar */
+.cancel-button {
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+    .cancel-button:hover {
+        background-color:   #c0392b;
+    }

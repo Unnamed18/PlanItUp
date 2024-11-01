@@ -1,0 +1,50 @@
+﻿@model PlanItUp.Models.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Detalles de Usuario";
+}
+
+<h2>Detalles de Usuario</h2>
+
+<div class="container bg-light p-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nombre</td>
+                <td>@Model.Nombre</td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td>@Model.Apellido</td>
+            </tr>
+            <tr>
+                <td>Correo Electrónico</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento</td>
+                <td>@Model.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <td>Género</td>
+                <td>@Model.Genero</td>
+            </tr>
+            <tr>
+                <td>DNI</td>
+                <td>@Model.Dni</td>
+            </tr>
+            <tr>
+                <td>Celular</td>
+                <td>@Model.Celular</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Volver al Inicio</a>
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanItUp", "PlanItUp\PlanItUp.csproj", "{B861A1BE-76A7-473C-9FC8-4136B337330B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B861A1BE-76A7-473C-9FC8-4136B337330B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B861A1BE-76A7-473C-9FC8-4136B337330B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B861A1BE-76A7-473C-9FC8-4136B337330B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B861A1BE-76A7-473C-9FC8-4136B337330B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D05F165-15C9-4534-AB02-69D5E6F9AC7C}
+	EndGlobalSection
+EndGlobal

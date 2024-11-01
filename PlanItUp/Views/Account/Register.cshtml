@@ -1,0 +1,215 @@
+﻿@using PlanItUp.Models.ViewModels
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - PlanitUp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    .form-control {
+        -webkit-appearance: menulist;
+        -moz-appearance: menulist;
+        appearance: menulist;
+        padding-right: 20px; /* Espacio para la flecha */
+        background-color: white; /* fondo blanco */
+        border: 1px solid #ccc; /* Personalizar el borde */
+        border-radius: 4px; /* Bordes redondeados */
+    }
+</style>
+
+<!-- Estilos CSS para el modal -->
+<style>
+    .modal {
+        display: none; /* Ocultado por defecto */
+        position: fixed; /* Posicionamiento fijo */
+        z-index: 1000; /* Asegúrate de que esté en el frente */
+        left: 0;
+        top: 0;
+        width: 100%; /* Ancho completo */
+        height: 100%; /* Altura completa */
+        overflow: auto; /* Habilita el desplazamiento si es necesario */
+        background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    }
+
+    .modal-content {
+        background-color: #fefefe; /* Color de fondo del modal */
+        margin: auto; /* Centrado automático */
+        padding: 20px; /* Espaciado interno */
+        border: 1px solid #888; /* Borde */
+        width: 300px; /* Ancho del modal */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+        border-radius: 8px; /* Bordes redondeados */
+        position: relative; /* Posicionamiento relativo para cerrar */
+    }
+
+    .close-modal {
+        color: #aaa; /* Color de la "X" para cerrar */
+        float: right; /* Alinear a la derecha */
+        font-size: 28px; /* Tamaño de la fuente */
+        font-weight: bold; /* Negrita */
+        cursor: pointer; /* Indica que es clickeable */
+    }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black; /* Color al pasar el mouse */
+            text-decoration: none; /* Sin subrayado */
+            cursor: pointer; /* Indica que es clickeable */
+        }
+</style>
+
+<h2>Formulario de registro de usuarios</h2>
+
+<div class="container bg-light p-4">
+    
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <p>Ya iniciaste sesión. Seras redirigido al inicio en unos segundos...</p>
+
+        <script>
+            setTimeout(function () {
+                window.location.href = '@Url.Action("Index" , "Home")';
+            }, 3000);
+        </script>
+    } else
+    {
+        <!-- Contenedor de pasos del formulario -->
+        <div class="form-group">
+            <form asp-action="Register" method="post">
+                <!-- Paso 1: Crear cuenta -->
+                <div class="form-step" id="step1">
+                    <h1>Crea una Cuenta</h1>
+                    <p>Ingresa tu nombre y apellido</p>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="form-control"><br>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required class="form-control"><br>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" onclick="goToStep(2)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Información básica -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <h2>Información básica</h2>
+                    <p>Completa tu fecha de nacimiento, género, DNI y celular.</p>
+
+                    <div style="display: flex; gap: 10px;">
+                        <!-- Selector para Día -->
+                        <select id="dia" name="dia" required class="form-control" style="width: 90px;">
+                            <option value="">Día</option>
+                            <script>
+                                for (let i = 1; i <= 31; i++) {
+                                    document.write('<option value="' + i + '">' + i + '</option>');
+                                }
+                            </script>
+                        </select>
+
+                        <!-- Selector para Mes -->
+                        <select id="mes" name="mes" required class="form-control" style="width: 100px;">
+                            <option value="">Mes</option>
+                            <script>
+                                for (let i = 1; i <= 12; i++) {
+                                    document.write('<option value="' + i + '">' + i + '</option>');
+                                }
+                            </script>
+                        </select>
+
+                        <!-- Selector para Año -->
+                        <select id="año" name="año" required class="form-control" style="width: 100px;">
+                            <option value="">Año</option>
+                            <script>
+                                const currentYear = new Date().getFullYear();
+                                for (let i = 1960; i <= currentYear; i++) {
+                                    document.write('<option value="' + i + '">' + i + '</option>');
+                                }
+                            </script>
+                        </select>
+                    </div><br>
+
+                    <!-- Selector para Género -->
+                    <select id="genero" name="genero" required class="form-control" style="width: 140px;">
+                        <option value="">Género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select><br>
+
+                    <!-- Campo para DNI -->
+                    <input type="text" id="dni" name="dni" placeholder="Ingrese DNI sin puntos ni guiones" required class="form-control" style="width: 310px;" maxlength="8"
+                           oninput="this.value = this.value.slice(0, 8)"><br>
+
+                    <!-- Campo para Celular -->
+                    <input type="tel" id="celular" name="celular" placeholder="Ingrese los 11 digitos de su Celular" required class="form-control" style="width: 310px;" maxlength="11"
+                           oninput="this.value = this.value.slice(0, 10)"><br>
+
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(1)">Volver atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(3)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Paso 3: Correo electrónico -->
+                <div class="form-step" id="step3" style="display: none;">
+                    <h3>Escribe tu dirección de correo electronico</h3>
+                    <p>Deberás confirmar este correo electrónico, para poder iniciar sesión</p>
+                    <input type="email" id="email" name="email" placeholder="correo electrónico" required class="form-control"><br>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Volver atrás</button>
+                        <button type="submit" class="btn btn-primary" onclick="goToStep(4)">Enviar</button>
+                    </div>
+                </div>
+
+                <!-- Paso 4: Tipo de usuario -->
+                <div class="form-step" id="step4" style="display: none;">
+                    <h3>En esta sección deberas seleccionar tu rol</h3>
+                    <p>Según el tipo de rol se te pediran datos extra</p>
+                    <button type="button" class="btn btn-primary" id="open-modal">Continuar</button>
+                    <button type="submit" class="next-button">Finalizar</button>
+                </div>
+
+                <!-- Modal para "Crear cuenta" -->
+                <div class="modal" id="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close-modal" id="close-modal">&times;</span>
+                        <h2>Selecciona el tipo de cuenta</h2>
+                        <label>
+                            <input type="radio" name="accountType" value="personal"> Uso personal
+                        </label><br>
+                        <label>
+                            <input type="radio" name="accountType" value="business"> Uso negocio
+                        </label><br>
+                        <button type="button" class="submit-modal" id="submit-modal">Confirmar</button>
+                    </div>
+                </div>
+
+                <script>
+                    document.getElementById("open-modal").onclick = function () {
+                        document.getElementById("modal").style.display = "block";
+                    };
+                    document.getElementById("close-modal").onclick = function () {
+                        document.getElementById("modal").style.display = "none";
+                    };
+                    window.onclick = function (event) {
+                        if (event.target == document.getElementById("modal")) {
+                            document.getElementById("modal").style.display = "none";
+                        }
+                    };
+                </script>
+
+            </form>
+        </div>
+
+        <!-- Archivo JavaScript -->
+        <script src="~/js/GoToSteps.js"></script>
+        <script src="~/js/ValidarMail.js"></script>
+        <script src="~/js/ValidarDNI&Celular.js"></script>
+        <script src="~/js/UserFormData.js"></script>
+    }
+
+</div>

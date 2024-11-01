@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceder - PlanitUp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<div class="container bg-light p-4">
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <p>Ya iniciaste sesión. Seras redirigido al inicio en unos segundos...</p>
+
+        <script>
+            setTimeout(function () {
+                window.location.href = '@Url.Action("Index", "Home")';
+            }, 3000);
+        </script>
+    } else
+    {
+        <!-- Formulario de inicio de sesión -->
+        <h2>Iniciar sesión</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input id="Email" name="Email" required type="text" class="form-control"/>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input id="password" name="password" required type="password" class="form-control" />
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <br />
+            <br />
+            <h5>¿No tenes cuenta? &#9758; <a class="btn btn-outline-primary mt-2" asp-action="Register">Registrarse</a></h5>
+            <br />
+            <h5>¿Olvidaste tu contraseña? &#9758; <a class="btn btn-secondary mt-2" asp-action="ChangePassword">Cambiar contraseña</a></h5>
+            
+        </form>
+    }
