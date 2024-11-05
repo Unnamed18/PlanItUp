@@ -5,3 +5,4 @@
         public string RequestId { get; set; }
     }
 }
+//abstract

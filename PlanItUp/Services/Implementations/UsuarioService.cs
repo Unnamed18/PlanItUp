@@ -1,5 +1,5 @@
 ﻿using PlanItUp.Data.Implementations;
-using PlanItUp.Models;
+using PlanItUp.Models.ViewModels;
 
 namespace PlanItUp.Services
 {
@@ -13,10 +13,10 @@ namespace PlanItUp.Services
         }
 
 
-        public async Task<int?> SingUpService(Client client)
+        public async Task<int?> SingUpService(Usuario user)
         {
 
-            int? rowsAffected = await _authDAO.signUp(client);
+            int? rowsAffected = await _authDAO.signUp(user);
             return rowsAffected;
         }
 
