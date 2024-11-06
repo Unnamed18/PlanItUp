@@ -1,0 +1,170 @@
+﻿@using PlanItUp.Models.ViewModels
+
+@{
+    ViewData["Title"] = "Cargar Espacio";
+}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        background-color: #f8f9fa;
+    }
+
+    .form-title {
+        margin-bottom: 20px;
+    }
+
+    .form-group, .form-check {
+        margin-bottom: 15px;
+    }
+
+    .form-check-label {
+        margin-left: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .divider {
+        height: 2px;
+        background-color: #ddd;
+        margin: 30px 0;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 1;
+        padding: 15px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Este apartado es para cargar los espacios que ofrece un prestador</h1>
+    <p>A continuación debe ingresar un nuevo espacio a prestar</p>
+
+    <div class="row">
+        <!-- Primer formulario -->
+        <div class="form-container column">
+            <form method="post" class="mt-4">
+                <h2 class="form-title">Formulario de Espacio</h2>
+
+                <div class="form-group">
+                    <label for="NombreLugar">Nombre del Espacio</label>
+                    <input type="text" id="NombreLugar" name="NombreLugar" class="form-control" maxlength="100" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Precio">Precio</label>
+                    <input type="number" id="Precio" name="Precio" class="form-control" step="0.01" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Capacidad">Capacidad (personas)</label>
+                    <input type="number" id="Capacidad" name="Capacidad" class="form-control" min="1" required />
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="SectFumador" name="SectFumador" class="form-check-input" />
+                    <label for="SectFumador" class="form-check-label">Sector Fumador</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="AdmiteMascota" name="AdmiteMascota" class="form-check-input" />
+                    <label for="AdmiteMascota" class="form-check-label">Admite Mascotas</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="AireLibre" name="AireLibre" class="form-check-input" />
+                    <label for="AireLibre" class="form-check-label">Aire Libre</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="Pileta" name="Pileta" class="form-check-input" />
+                    <label for="Pileta" class="form-check-label">Pileta</label>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="Wifi" name="Wifi" class="form-check-input" />
+                    <label for="Wifi" class="form-check-label">Wi-Fi</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="Telefono">Teléfono</label>
+                    <input type="tel" id="Telefono" name="Telefono" class="form-control" maxlength="15" />
+                </div>
+
+                <!-- Campo de fecha con calendario desplegable -->
+                @* <div class="form-group">
+                <label for="FechaEvento">Fecha del Evento</label>
+                <input type="date" id="FechaEvento" name="FechaEvento" class="form-control" required />
+                </div> *@
+            </form>
+        </div>
+
+        <!-- Segundo formulario -->
+        <div class="form-container column">
+            <form method="post" class="mt-4">
+                <h2 class="form-title">Datos Adicionales del Espacio</h2>
+
+                <div class="form-group">
+                    <label for="Pais">País</label>
+                    <input type="text" id="Pais" name="Pais" class="form-control" maxlength="100" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Provincia">Provincia</label>
+                    <input type="text" id="Provincia" name="Provincia" class="form-control" maxlength="100" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Partido">Partido</label>
+                    <input type="text" id="Partido" name="Partido" class="form-control" maxlength="100" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Localidad">Localidad</label>
+                    <input type="text" id="Localidad" name="Localidad" class="form-control" maxlength="100" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Calle">Calle</label>
+                    <input type="text" id="Calle" name="Calle" class="form-control" maxlength="255" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="EntreCalle">Entre Calles</label>
+                    <input type="text" id="EntreCalle" name="EntreCalle" class="form-control" maxlength="255" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Altura">Altura</label>
+                    <input type="text" id="Altura" name="Altura" class="form-control" maxlength="100" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Botón de carga general -->
+    <div class="form-container mt-3">
+        <button type="submit" class="btn btn-primary mt-3" onclick="MisEspacios()">Cargar Espacio</button>
+    </div>
+</div>
+
+
+<script>
+
+    function MisEspacios() {
+        
+        window.location.href = '/Account/MisEspacios';
+    }
+
+</script>

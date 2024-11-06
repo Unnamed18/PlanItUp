@@ -22,6 +22,33 @@ namespace PlanItUp.Controllers
             return View();
         }
 
+        public IActionResult AltaEspacioPrest()
+        {
+            
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ReservarEvento()
+        {
+           
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult MisReservas()
+        {
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult MisEspacios()
+        {
+
+            return View();
+        }
+
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> register(Usuario usuario)
@@ -37,7 +64,6 @@ namespace PlanItUp.Controllers
                     }
 
                     var RolUsu = await _Context.Roles.FirstOrDefaultAsync(r => r.Descripcion_Rol == "Consumidor");
-                    //Cambiar validacion para que inicie como cliente o prestador
 
                     if (RolUsu != null)
                     {
@@ -105,7 +131,7 @@ namespace PlanItUp.Controllers
                         new ClaimsPrincipal(Identity)
                     );
 
-                    //if (User.IsInRole("Administrador") || User.IsInRole("Supervisor"))
+                    //if (User.IsInRole("Administrador") || User.IsInRole ("Supervisor"))
                     //    return RedirectToAction("Index", "Dashboard");
 
                     //else

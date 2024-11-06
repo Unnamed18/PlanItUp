@@ -6,7 +6,7 @@ namespace PlanItUp.Models.ViewModels
     public class Usuario
     {
         [Key]
-        public int IdUsuario { get; set; }
+        public short IdUsuario { get; set; }
         //Fin campo IdUsuario
 
         [ForeignKey("ID_ROL")]

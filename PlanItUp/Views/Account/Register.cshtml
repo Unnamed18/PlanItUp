@@ -156,9 +156,10 @@
 
                 <!-- Paso 3: Correo electrónico -->
                 <div class="form-step" id="step3" style="display: none;">
-                    <h3>Escribe tu dirección de correo electronico</h3>
+                    <h3>Escribe tu dirección de correo electronico y una contraseña</h3>
                     <p>Deberás confirmar este correo electrónico, para poder iniciar sesión</p>
                     <input type="email" id="email" name="email" placeholder="correo electrónico" required class="form-control"><br>
+                    <input type="password" id="password" name="Contraseña" placeholder="Ingrese su contraseña" required class="form-control"><br>
                     <div class="button-group">
                         <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Volver atrás</button>
                         <button type="submit" class="btn btn-primary" onclick="goToStep(4)">Enviar</button>
@@ -170,7 +171,7 @@
                     <h3>En esta sección deberas seleccionar tu rol</h3>
                     <p>Según el tipo de rol se te pediran datos extra</p>
                     <button type="button" class="btn btn-primary" id="open-modal">Continuar</button>
-                    <button type="submit" class="next-button">Finalizar</button>
+                    @* <button type="submit" class="next-button">Finalizar</button> *@
                 </div>
 
                 <!-- Modal para "Crear cuenta" -->
@@ -179,12 +180,12 @@
                         <span class="close-modal" id="close-modal">&times;</span>
                         <h2>Selecciona el tipo de cuenta</h2>
                         <label>
-                            <input type="radio" name="accountType" value="personal"> Uso personal
+                            <input type="radio" name="accountType" value="personal"> Consumidor
                         </label><br>
                         <label>
-                            <input type="radio" name="accountType" value="business"> Uso negocio
+                            <input type="radio" name="accountType" value="business"> Prestador
                         </label><br>
-                        <button type="button" class="submit-modal" id="submit-modal">Confirmar</button>
+                        <button type="button" class="submit-modal" onclick="OpElegida()" id="submit-modal">Confirmar</button>
                     </div>
                 </div>
 
@@ -200,6 +201,23 @@
                             document.getElementById("modal").style.display = "none";
                         }
                     };
+
+                    function OpElegida() {
+                        // Obtener el radio seleccionado
+                        const selectedOption = document.querySelector('input[name="accountType"]:checked');
+
+                        if (selectedOption) {
+                            // Redirección basada en la opción seleccionada
+                            if (selectedOption.value === 'business') {
+                                window.location.href = '/Account/AltaEspacioPrest';
+                            } else {
+                                window.location.href = '/Account/ReservarEvento';
+                            }
+                        } else {
+                            alert('Por favor, selecciona una opción.');
+                        }
+                    }
+
                 </script>
 
             </form>

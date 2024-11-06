@@ -1,0 +1,146 @@
+﻿@using PlanItUp.Models.ViewModels
+
+@{
+    ViewData["Title"] = "Mis Espacios";
+}
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .icon {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-color: #3498db;
+        border-radius: 4px;
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .spaces-container, .reserved-places-container {
+        border: 2px solid #2ecc71;
+        border-radius: 8px;
+        padding: 15px;
+        display: none; /* Oculto por defecto */
+        margin-top: 20px;
+    }
+
+    .reserved-places-container {
+        border-color: #e67e22;
+    }
+
+    .space-item, .reserved-place-item {
+        border: 1px solid #333;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .details {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+</style>
+<button type="submit" class="btn btn-primary mt-3" onclick="CargarEspacios()">Cargar otro espacio</button>
+<div class="container">
+    <div class="header">Mis Espacios</div>
+
+    <p>Mis espacios cargados (Pulse el botón para mas detalles)</p>
+
+    <!-- Ícono para mostrar espacios -->
+    <div class="icon" onclick="toggleSpaces()"></div>
+
+    <!-- Contenedor de los espacios -->
+    <div id="spaces" class="spaces-container">
+        <!-- Espacio 1 -->
+        <div class="space-item">
+            <div class="details">
+                <p><strong>Nombre del lugar:</strong> Espacio X</p>
+                <p><strong>Dirección:</strong> Calle Ejemplo 456</p>
+                <p><strong>Teléfono:</strong> 123-456-789</p>
+                <p><strong>Precio:</strong> $500</p>
+                <p><strong>Método de pago:</strong> Efectivo</p>
+            </div>
+        </div>
+
+        <!-- Otro espacio, como ejemplo -->
+        <div class="space-item">
+            <div class="details">
+                <p><strong>Nombre del lugar:</strong> Espacio Y</p>
+                <p><strong>Dirección:</strong> Av. Principal 789</p>
+                <p><strong>Teléfono:</strong> 987-654-321</p>
+                <p><strong>Precio:</strong> $750</p>
+                <p><strong>Método de pago:</strong> Transferencia</p>
+            </div>
+        </div>
+    </div>
+    <br />  
+    <p>¿Quienes me reservaron? (Pulse el botón para mas detalles)</p>
+   
+    <!-- Ícono para mostrar lugares reservados -->
+    <div class="icon" onclick="toggleReservedPlaces()"></div>
+    
+    <!-- Contenedor de los lugares reservados -->
+    <div id="reserved-places" class="reserved-places-container">
+        <!-- Lugar reservado 1 -->
+        <div class="reserved-place-item">
+            <div class="details">
+                <p><strong>Nombre del lugar:</strong> Espacio X</p>
+                <p><strong>Dirección:</strong> Calle Ejemplo 456</p>
+                <p><strong>Precio:</strong> $500</p>
+                <p><strong>Método de pago:</strong> Efectivo</p>
+                <p><strong>Reservado por:</strong> Juan Pérez</p>
+                <p><strong>Teléfono:</strong> 123-456-789</p>
+                <p><strong>Email:</strong> juanperez@test1.com</p>
+                <p><strong>Día que reservó:</strong> 12/11/2024</p>
+            </div>
+        </div>
+
+        <!-- Otro lugar reservado, como ejemplo -->
+        <div class="reserved-place-item">
+            <div class="details">
+                <p><strong>Nombre del lugar:</strong> Espacio Y</p>
+                <p><strong>Dirección:</strong> Av. Principal 789</p>
+                <p><strong>Precio:</strong> $750</p>
+                <p><strong>Método de pago:</strong> Transferencia</p>
+                <p><strong>Reservado por:</strong> Ana López</p>
+                <p><strong>Teléfono:</strong> 987-654-321</p>
+                <p><strong>Email:</strong> analopez@test2.com</p>
+                <p><strong>Día que reservó:</strong> 25/11/2024</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSpaces() {
+        var spaces = document.getElementById("spaces");
+        spaces.style.display = (spaces.style.display === "none" || spaces.style.display === "") ? "block" : "none";
+    }
+
+    function toggleReservedPlaces() {
+        var reservedPlaces = document.getElementById("reserved-places");
+        reservedPlaces.style.display = (reservedPlaces.style.display === "none" || reservedPlaces.style.display === "") ? "block" : "none";
+    }
+
+        function CargarEspacios() {
+                window.location.href = '/Account/AltaEspacioPrest';
+        }
+</script>

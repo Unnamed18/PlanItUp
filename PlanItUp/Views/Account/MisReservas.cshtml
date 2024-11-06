@@ -1,0 +1,131 @@
+﻿@using PlanItUp.Models.ViewModels
+
+@{
+    ViewData["Title"] = "Mis reservas";  
+}
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .icon {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-color: #3498db;
+        border-radius: 4px;
+        display: inline-block;
+        margin: 10px;
+    }
+    .reservations-container {
+        border: 2px solid #e74c3c;
+        border-radius: 8px;
+        padding: 15px;
+        display: none; /* Oculto por defecto */
+        margin-top: 20px;
+    }
+    .reservation-item {
+        border: 1px solid #333;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .details {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .action-btn {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .action-btn.cancel {
+        background-color: #e74c3c;
+    }
+</style>
+
+<button type="submit" class="action-btn" onclick="Buscar()">Buscar espacios </button>
+     <br /> 
+
+<div class="container">
+   
+    <div class="header">Mis Reservas</div>
+    
+    <!-- Ícono para mostrar reservas -->
+    <div class="icon" onclick="toggleReservations()"></div>
+    <p>Mis reservas (haga clic en el ícono para ver detalles)</p>
+
+    <!-- Contenedor de las reservas -->
+    <div id="reservations" class="reservations-container">
+        <!-- Reserva 1 -->
+        <div class="reservation-item">
+            <div class="details">
+                <p><strong>Nombre del espacio:</strong> Espacio A</p>
+                <p><strong>Precio:</strong> $500</p>
+                <p><strong>Forma de pago:</strong> Efectivo</p>
+                <p><strong>Teléfono:</strong> 123-456-789</p>
+                <p><strong>Dirección:</strong> Calle Falsa 123</p>
+                <p><strong>Día del evento:</strong> 12/12/2024</p>
+            </div>
+            <div class="actions">
+                <button class="action-btn cancel">Cancelar</button>
+                <button class="action-btn">+ detalles</button>
+            </div>
+        </div>
+
+        <!-- Otra reserva, como ejemplo -->
+        <div class="reservation-item">
+            <div class="details">
+                <p><strong>Nombre del espacio:</strong> Espacio B</p>
+                <p><strong>Precio:</strong> $750</p>
+                <p><strong>Forma de pago:</strong> Transferencia </p>
+                <p><strong>Teléfono:</strong> 987-654-321</p>
+                <p><strong>Dirección:</strong> Av. Siempre Viva 742</p>
+                <p><strong>Día del evento:</strong> 25/12/2024</p>
+            </div>
+            <div class="actions">
+                <button class="action-btn cancel">Cancelar</button>
+                <button class="action-btn">+ detalles</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function toggleReservations() {
+        var reservations = document.getElementById("reservations");
+        if (reservations.style.display === "none" || reservations.style.display === "") {
+            reservations.style.display = "block";
+        } else {
+            reservations.style.display = "none";
+        }
+    }
+
+    function Buscar() {
+         window.location.href = '/Account/ReservarEvento';       
+    }
+
+</script>
