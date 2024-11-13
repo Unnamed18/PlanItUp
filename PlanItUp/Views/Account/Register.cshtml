@@ -140,7 +140,7 @@
                     </select><br>
 
                     <!-- Campo para DNI -->
-                    <input type="text" id="dni" name="dni" placeholder="Ingrese DNI sin puntos ni guiones" required class="form-control" style="width: 310px;" maxlength="8"
+                    <input type="text" id="dni" name="dni" placeholder="Ingrese DNI sin puntos ni guiones" required class="form-control" style="width: 310px;" minlength="8" maxlength="8"
                            oninput="this.value = this.value.slice(0, 8)"><br>
 
                     <!-- Campo para Celular -->
@@ -159,22 +159,22 @@
                     <h3>Escribe tu dirección de correo electronico y una contraseña</h3>
                     <p>Deberás confirmar este correo electrónico, para poder iniciar sesión</p>
                     <input type="email" id="email" name="email" placeholder="correo electrónico" required class="form-control"><br>
-                    <input type="password" id="password" name="Contraseña" placeholder="Ingrese su contraseña" required class="form-control"><br>
+                    <input type="password" id="password" name="Contraseña" placeholder="Ingrese su contraseña" required class="form-control" minlength="8" maxlength="15"><br>
                     <div class="button-group">
                         <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Volver atrás</button>
-                        <button type="submit" class="btn btn-primary" onclick="goToStep(4)">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
                 </div>
 
                 <!-- Paso 4: Tipo de usuario -->
-                <div class="form-step" id="step4" style="display: none;">
+               @*  <div class="form-step" id="step4" style="display: none;">
                     <h3>En esta sección deberas seleccionar tu rol</h3>
                     <p>Según el tipo de rol se te pediran datos extra</p>
-                    <button type="button" class="btn btn-primary" id="open-modal">Continuar</button>
+                    <button type="button" class="btn btn-primary" id="open-modal">Continuar</button> *@
                     @* <button type="submit" class="next-button">Finalizar</button> *@
-                </div>
+               @*  </div> *@
 
-                <!-- Modal para "Crear cuenta" -->
+                @* <!-- Modal para "Crear cuenta" -->
                 <div class="modal" id="modal" style="display: none;">
                     <div class="modal-content">
                         <span class="close-modal" id="close-modal">&times;</span>
@@ -218,7 +218,7 @@
                         }
                     }
 
-                </script>
+                </script> *@
 
             </form>
         </div>
@@ -227,7 +227,7 @@
         <script src="~/js/GoToSteps.js"></script>
         <script src="~/js/ValidarMail.js"></script>
         <script src="~/js/ValidarDNI&Celular.js"></script>
-        <script src="~/js/UserFormData.js"></script>
+        @* <script src="~/js/UserFormData.js"></script> *@
     }
 
 </div>

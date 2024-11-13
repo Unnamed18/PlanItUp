@@ -22,33 +22,6 @@ namespace PlanItUp.Controllers
             return View();
         }
 
-        public IActionResult AltaEspacioPrest()
-        {
-            
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult ReservarEvento()
-        {
-           
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult MisReservas()
-        {
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult MisEspacios()
-        {
-
-            return View();
-        }
-
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> register(Usuario usuario)

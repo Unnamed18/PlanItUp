@@ -41,28 +41,28 @@ function goToStep(step) {
     });
 }
 
-// Manejador para el botón "Enviar" en el último paso
-document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Evita el envío del formulario
+//// Manejador para el botón "Enviar" en el último paso
+//document.querySelector("form").addEventListener("submit", function (e) {
+//    e.preventDefault(); // Evita el envío del formulario
 
-    // Llamada a la función para capturar los datos
-    const formData = capturarDatosRegistro();
+//    // Llamada a la función para capturar los datos
+//    const formData = capturarDatosRegistro();
 
-    // Aquí puedes procesar los datos o enviarlos al servidor usando fetch/axios
-    console.log("Datos capturados:", formData);
-    // Ejemplo de envío:
-    // fetch("/tu-endpoint", { method: "POST", body: formData });
-});
+//    // Aquí puedes procesar los datos o enviarlos al servidor usando fetch/axios
+//    console.log("Datos capturados:", formData);
+//    // Ejemplo de envío:
+//    // fetch("/tu-endpoint", { method: "POST", body: formData });
+//});
 
-// Manejadores de eventos para el modal
-document.getElementById("open-modal").onclick = function () {
-    document.getElementById("modal").style.display = "block";
-};
-document.getElementById("close-modal").onclick = function () {
-    document.getElementById("modal").style.display = "none";
-};
-window.onclick = function (event) {
-    if (event.target == document.getElementById("modal")) {
-        document.getElementById("modal").style.display = "none";
-    }
-};
+//// Manejadores de eventos para el modal
+//document.getElementById("open-modal").onclick = function () {
+//    document.getElementById("modal").style.display = "block";
+//};
+//document.getElementById("close-modal").onclick = function () {
+//    document.getElementById("modal").style.display = "none";
+//};
+//window.onclick = function (event) {
+//    if (event.target == document.getElementById("modal")) {
+//        document.getElementById("modal").style.display = "none";
+//    }
+//};
