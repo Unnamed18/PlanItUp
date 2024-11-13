@@ -1,4 +1,4 @@
-﻿@using PlanItUp.Models.ViewModels
+﻿﻿@using PlanItUp.Models.ViewModels
 
 @{
     ViewData["Title"] = "Registro";
@@ -60,24 +60,25 @@
         .close-modal:focus {
             color: black; /* Color al pasar el mouse */
             text-decoration: none; /* Sin subrayado */
-            cursor: pointer; /* Indica que es clickeable */
+            cursor: pointer; /* Indica que es clickeable  asd*/
         }
 </style>
 
 <h2>Formulario de registro de usuarios</h2>
 
 <div class="container bg-light p-4">
-    
+
     @if (User.Identity != null && User.Identity.IsAuthenticated)
     {
         <p>Ya iniciaste sesión. Seras redirigido al inicio en unos segundos...</p>
 
         <script>
             setTimeout(function () {
-                window.location.href = '@Url.Action("Index" , "Home")';
+                window.location.href = '@Url.Action("Index", "Home")';
             }, 3000);
         </script>
-    } else
+    }
+    else
     {
         <!-- Contenedor de pasos del formulario -->
         <div class="form-group">
@@ -89,7 +90,7 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="form-control"><br>
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido" required class="form-control"><br>
                     <div class="button-group">
-                        <button type="button" class="btn btn-primary" onclick="goToStep(2)">Siguiente</button>
+                        <button type="button" class="btn btn-primary" onclick="(console.log("test")">Siguiente</button>
                     </div>
                 </div>
 

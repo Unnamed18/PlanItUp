@@ -1,68 +1,104 @@
-﻿// Función para capturar los datos del formulario de registro en un objeto FormData
-function capturarDatosRegistro() {
-    // Selecciona el formulario
-    const form = document.querySelector("form");
+﻿//function capturarDatosRegistro() {
+//    // Selecciona el formulario
+//    const form = document.querySelector("form");
+//    const formData = new FormData(form);
 
-    // Crear un objeto FormData y agregar todos los campos del formulario
-    const formData = new FormData(form);
+//    const nombre = document.getElementById("nombre").value;
+//    const apellido = document.getElementById("apellido").value;
+//    const dia = document.getElementById("dia").value;
+//    const mes = document.getElementById("mes").value;
+//    const año = document.getElementById("año").value;
+//    const genero = document.getElementById("genero").value;
+//    const dni = document.getElementById("dni").value;
+//    const celular = document.getElementById("celular").value;
+//    const email = document.getElementById("email").value;
+//    const accountType = document.querySelector('input[name="accountType"]:checked')?.value;
 
-    // Captura datos del formulario en el objeto FormData
-    const nombre = document.getElementById("nombre").value;
-    const apellido = document.getElementById("apellido").value;
-    const dia = document.getElementById("dia").value;
-    const mes = document.getElementById("mes").value;
-    const año = document.getElementById("año").value;
-    const genero = document.getElementById("genero").value;
-    const dni = document.getElementById("dni").value;
-    const celular = document.getElementById("celular").value;
-    const email = document.getElementById("email").value;
-    const accountType = document.querySelector('input[name="accountType"]:checked')?.value;
+//    // Crear un objeto con los datos capturados
+//    const datosFormulario = {
+//        nombre,
+//        apellido,
+//        dia,
+//        mes,
+//        año,
+//        genero,
+//        dni,
+//        celular,
+//        email,
+//        accountType
+//    };
 
-    // Agregar valores al FormData
-    formData.append("nombre", nombre);
-    formData.append("apellido", apellido);
-    formData.append("dia", dia);
-    formData.append("mes", mes);
-    formData.append("año", año);
-    formData.append("genero", genero);
-    formData.append("dni", dni);
-    formData.append("celular", celular);
-    formData.append("email", email);
-    if (accountType) formData.append("accountType", accountType);
-
-    return formData;
-}
-
-// Funciones para manejar el flujo de pasos
-function goToStep(step) {
-    const steps = document.querySelectorAll(".form-step");
-    steps.forEach((el, index) => {
-        el.style.display = (index === step - 1) ? "block" : "none";
-    });
-}
+//    return datosFormulario;
+//}
 
 //// Manejador para el botón "Enviar" en el último paso
 //document.querySelector("form").addEventListener("submit", function (e) {
 //    e.preventDefault(); // Evita el envío del formulario
 
 //    // Llamada a la función para capturar los datos
-//    const formData = capturarDatosRegistro();
+//    const datos = capturarDatosRegistro();
 
-//    // Aquí puedes procesar los datos o enviarlos al servidor usando fetch/axios
-//    console.log("Datos capturados:", formData);
-//    // Ejemplo de envío:
-//    // fetch("/tu-endpoint", { method: "POST", body: formData });
+//    // Imprimir los datos en la consola
+//    console.log("Datos capturados:", datos);
 //});
 
-//// Manejadores de eventos para el modal
-//document.getElementById("open-modal").onclick = function () {
-//    document.getElementById("modal").style.display = "block";
-//};
-//document.getElementById("close-modal").onclick = function () {
-//    document.getElementById("modal").style.display = "none";
-//};
-//window.onclick = function (event) {
-//    if (event.target == document.getElementById("modal")) {
-//        document.getElementById("modal").style.display = "none";
+// const signUpFetch = async () => {
+//    const user = {
+//        name: "alan",
+//        lastname: "erriu",
+//        password_hash: "alisjhdli",
+//        email: "asdijasd@gmail.com",
+//        phone_number: "11235689",
+//        status: "1",
+//        role_id: "1"
+//    };
+//    console.log("test")
+//    try {
+//        const response = await fetch("https://localhost:7072/api/auth/signup", {
+//            method: "POST",
+//            headers: {
+//                "Content-Type": "application/json"
+//            },
+//            body: JSON.stringify(user)
+//        });
+
+//        if (!response.ok) {
+//            throw new Error("Network response was not ok");
+//        }
+
+//        const credentials = await response.json();
+//        return credentials;
+//    } catch (error) {
+//        console.error("There was a problem with the fetch operation:", error);
 //    }
 //};
+const signUpFetch = async () => {
+    const user = {
+        name: "alan",
+        lastname: "erriu",
+        password_hash: "alisjhdli",
+        email: "asdijasd@gmail.com",
+        phone_number: "11235689",
+        status: "1",
+        role_id: "1"
+    };
+
+    try {
+        const response = await fetch("https://localhost:7072/api/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const credentials = await response.json();
+        return credentials;
+    } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+    }
+};
