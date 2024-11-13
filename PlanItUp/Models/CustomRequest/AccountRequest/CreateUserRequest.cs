@@ -1,9 +1,8 @@
-﻿namespace PlanItUp.Models.ViewModels
+﻿namespace PlanItUp.Models.CustomRequest.AccountRequest
 {
-    public class Usuario
+    public class CreateUserRequest
     {
-        public short IdUsuario { get; set; }
-        public short IdRol { get; set; }
+
         public string Nombre { get; set; } = null!;
         public string Apellido { get; set; }
         public byte DNI { get; set; }
@@ -11,7 +10,7 @@
         public string ContrasenaHash { get; set; } = null!;
         public string Celular { get; set; } = null!;
         public DateTime? FechaNac { get; set; }
-        public bool EstadoUsuario { get; set; }
-        public bool? Token { get; set; }
+
+
     }
 }
