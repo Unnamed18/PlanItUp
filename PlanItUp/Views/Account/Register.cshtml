@@ -90,7 +90,7 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="form-control"><br>
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido" required class="form-control"><br>
                     <div class="button-group">
-                        <button type="button" class="btn btn-primary" onclick="(console.log("test")">Siguiente</button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(2)">Siguiente</button>
                     </div>
                 </div>
 
@@ -132,14 +132,6 @@
                         </select>
                     </div><br>
 
-                    <!-- Selector para Género -->
-                    <select id="genero" name="genero" required class="form-control" style="width: 140px;">
-                        <option value="">Género</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                    </select><br>
-
                     <!-- Campo para DNI -->
                     <input type="text" id="dni" name="dni" placeholder="Ingrese DNI sin puntos ni guiones" required class="form-control" style="width: 310px;" maxlength="8"
                            oninput="this.value = this.value.slice(0, 8)"><br>
@@ -162,47 +154,9 @@
                     <input type="email" id="email" name="email" placeholder="correo electrónico" required class="form-control"><br>
                     <div class="button-group">
                         <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Volver atrás</button>
-                        <button type="submit" class="btn btn-primary" onclick="goToStep(4)">Enviar</button>
+                        <button type="submit" class="btn btn-primary" href="../Login">Finalizar</button>
                     </div>
                 </div>
-
-                <!-- Paso 4: Tipo de usuario -->
-                <div class="form-step" id="step4" style="display: none;">
-                    <h3>En esta sección deberas seleccionar tu rol</h3>
-                    <p>Según el tipo de rol se te pediran datos extra</p>
-                    <button type="button" class="btn btn-primary" id="open-modal">Continuar</button>
-                    <button type="submit" class="next-button">Finalizar</button>
-                </div>
-
-                <!-- Modal para "Crear cuenta" -->
-                <div class="modal" id="modal" style="display: none;">
-                    <div class="modal-content">
-                        <span class="close-modal" id="close-modal">&times;</span>
-                        <h2>Selecciona el tipo de cuenta</h2>
-                        <label>
-                            <input type="radio" name="accountType" value="personal"> Uso personal
-                        </label><br>
-                        <label>
-                            <input type="radio" name="accountType" value="business"> Uso negocio
-                        </label><br>
-                        <button type="button" class="submit-modal" id="submit-modal">Confirmar</button>
-                    </div>
-                </div>
-
-                <script>
-                    document.getElementById("open-modal").onclick = function () {
-                        document.getElementById("modal").style.display = "block";
-                    };
-                    document.getElementById("close-modal").onclick = function () {
-                        document.getElementById("modal").style.display = "none";
-                    };
-                    window.onclick = function (event) {
-                        if (event.target == document.getElementById("modal")) {
-                            document.getElementById("modal").style.display = "none";
-                        }
-                    };
-                </script>
-
             </form>
         </div>
 
@@ -210,7 +164,7 @@
         <script src="~/js/GoToSteps.js"></script>
         <script src="~/js/ValidarMail.js"></script>
         <script src="~/js/ValidarDNI&Celular.js"></script>
-        <script src="~/js/UserFormData.js"></script>
+@*         <script src="~/js/UserFormData.js"></script> *@
     }
 
 </div>

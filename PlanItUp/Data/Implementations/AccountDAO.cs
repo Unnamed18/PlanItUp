@@ -9,7 +9,7 @@
     {
         private string _connectionString = @"data source=DESKTOP-KCGGJDV\\SQLEXPRESS;initial Catalog=PlanItUp; Integrated Security=True;";
 
-        private string _insertUser = @"INSERT INTO [Usuario] (id_rol,Nombre, Apellido, DNI,Email, Contrasena_Hash,Celular,FechaNac,EstadoUsuario, Token)
+        private string _insertUser = @"INSERT INTO [Usuario] (id_rol,Nombre, Apellido, DNI, Email, Contrasena_Hash, Celular, FechaNac, EstadoUsuario, Token)
                                          VALUES (@Roleid, @Name, @LastName,@Dni, @Password, @PhoneNumber, @FechaNac, @Genero, @EstadoUsuario)";
 
         private SqlConnection _dbConnection;

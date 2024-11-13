@@ -11,13 +11,13 @@ namespace PlanItUp.Models
 {
     public class BaseController : Controller
     {
-        public readonly AppDbContext _Context;
+        //public readonly AppDbContext _Context;
 
-        public BaseController(AppDbContext context)
-        {
+        //public BaseController(AppDbContext context)
+        //{
 
-            _Context = context;
-        }
+        //    _Context = context;
+        //}
 
         //public override ViewResult View(string? viewName, object? model)
         //{
