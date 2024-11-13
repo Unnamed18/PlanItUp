@@ -9,7 +9,7 @@ namespace PlanItUp.Controllers
         private readonly AccountService _usuarioService;
 
         public AuthController()
-        {
+        {//
             _usuarioService = new AccountService();
         }
         [HttpPost("signup")]
