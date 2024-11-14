@@ -7,10 +7,10 @@
 
     public class AccountDAO
     {
-        private string _connectionString = @"data source=DESKTOP-KCGGJDV\\SQLEXPRESS;initial Catalog=PlanItUp; Integrated Security=True;";
+        private string _connectionString = @"data source=DESKTOP-KCGGJDV\SQLEXPRESS;initial Catalog=PlanItUp; Integrated Security=True;";
 
-        private string _insertUser = @"INSERT INTO [Usuario] (id_rol,Nombre, Apellido, DNI, Email, Contrasena_Hash, Celular, FechaNac, EstadoUsuario, Token)
-                                         VALUES (@Roleid, @Name, @LastName,@Dni, @Password, @PhoneNumber, @FechaNac, @Genero, @EstadoUsuario)";
+        private string _insertUser = @"INSERT INTO [Usuario] (id_rol,Nombre, Apellido, DNI, Email, Contrasena_Hash, Celular, FechaNac, EstadoUsuario)
+                                         VALUES (@Roleid, @Name, @LastName,@Dni, @Email,@Password, @PhoneNumber, @FechaNac, @EstadoUsuario)";
 
         private SqlConnection _dbConnection;
         public AccountDAO()
@@ -20,7 +20,7 @@
 
         public async Task<int?> signUp(CreateUserRequest user)
         {
-            using (_dbConnection)
+            using (var connect = new SqlConnection(_connectionString))
             {
                 var parameters = new
                 {
@@ -34,7 +34,8 @@
                     FechaNac = user.FechaNac,
                     EstadoUsuario = 1,
                 };
-                var rowsAffected = await _dbConnection.ExecuteAsync(_insertUser, parameters);
+                var rowsAffected = await connect.ExecuteAsync(_insertUser, parameters);
+
                 return rowsAffected;
             }
 
